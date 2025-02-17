@@ -1,13 +1,12 @@
-import React, { useEffect } from 'react';
+
 
 import {
   HashRouter as Router,
-  Redirect,
   Route,
   Switch,
 } from 'react-router-dom';
 
-import { useDispatch, useSelector } from 'react-redux';
+
 
 
 
@@ -19,12 +18,9 @@ import HomePage from './UserPage/Home';
 
 
 function App() {
-  const dispatch = useDispatch();
 
 
-  useEffect(() => {
-    dispatch({ type: 'FETCH_USER' });
-  }, [dispatch]);
+
 
   return (
     <Router>
@@ -32,16 +28,6 @@ function App() {
      
         <Switch>
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
-          <Redirect exact from="/" to="/home" />
-
-          {/* Visiting localhost:5173/about will show the about page. */}
-          <Route
-            // shows AboutPage at all times (logged in or not)
-            exact
-            path="/about"
-          >
-          
-          </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:5173/user will show the UserPage if the user is logged in.
@@ -50,7 +36,7 @@ function App() {
           <Route
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/user"
+            path="/"
           >
             <HomePage />
           </Route>
